@@ -1,15 +1,24 @@
 # AGENTS.md
 
-## Project
+## Tech Stack
 
-- Mobile ChatGPT app using Expo, TypeScript, and pnpm.
+- **Core:** Expo, TypeScript, pnpm
+- **Styling:** NativeWind v5
+- **UI Components:** React Native Reusables
 
 ## Development Style
 
-- **Minimalism (KISS):** Prefer zero-config, concise code, and simple logic over unnecessary abstractions.
-- **YAGNI (You Aren't Gonna Need It):** Implement only what is strictly required for the current goal. Avoid overengineering, future-proofing, or adding premature structures/libraries.
+- **KISS:** Zero-config, concise code, simple logic. No unnecessary abstractions.
+- **YAGNI:** Implement strictly required features. No overengineering or premature libraries.
 
 ## Change Principles
 
-- **Respect Existing Code:** Preserve the original intent and structure. Refactor only if it objectively makes the code shorter or clearer.
+- **Respect Existing Code:** Preserve intent/structure. Refactor ONLY for objective clarity/brevity.
 - **Comments:** Keep meaningful comments. Write new comments politely in Korean.
+
+## Styling Principles
+
+- **NativeWind First:** Always use `className`. Fallback to `StyleSheet` only if unsupported.
+- **SafeArea:** No `className` on `SafeAreaView`. Use a wrapper `View` for layout/background.
+- **Reuse `components/ui`:** Strictly use local primitives (`Text`, `Input`, `Button`). Avoid ad-hoc wrappers.
+- **Inline UI:** Build screen UI inline. Extract components only for clear deduplication.
