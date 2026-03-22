@@ -7,7 +7,7 @@
     "prettier-plugin-tailwindcss"
   ],
   "importOrder": [
-    "^\\./global\\.css$",
+    "^~\\/global\\.css$",
     "^react$",
     "^expo(?:/.*)?$",
     "^expo-.+$",

@@ -1,4 +1,4 @@
-import './global.css'
+import '~/global.css'
 
 import { StatusBar } from 'expo-status-bar'
 
@@ -37,35 +37,6 @@ const MESSAGES: Message[] = [
   }
 ]
 
-function renderMessage({ item }: { item: Message }) {
-  const isUser = item.role === 'user'
-
-  return (
-    <View className={cn('gap-1.5', isUser ? 'items-end' : 'items-start')}>
-      <Text className="text-muted-foreground px-1 text-[12px] font-medium">
-        {isUser ? '나' : 'Hayate'}
-      </Text>
-      <View
-        className={cn(
-          'max-w-[84%] rounded-3xl px-4 py-3',
-          isUser
-            ? 'bg-primary rounded-br-lg'
-            : 'border-border bg-card rounded-bl-lg border'
-        )}
-      >
-        <Text
-          className={cn(
-            'text-[15px] leading-6',
-            isUser ? 'text-primary-foreground' : 'text-foreground'
-          )}
-        >
-          {item.text}
-        </Text>
-      </View>
-    </View>
-  )
-}
-
 export default function App() {
   return (
     <SafeAreaProvider>
@@ -89,7 +60,38 @@ export default function App() {
             <FlatList
               data={MESSAGES}
               keyExtractor={(item) => item.id}
-              renderItem={renderMessage}
+              renderItem={({ item }) => {
+                const isUser = item.role === 'user'
+                return (
+                  <View
+                    className={cn(
+                      'gap-1.5',
+                      isUser ? 'items-end' : 'items-start'
+                    )}
+                  >
+                    <Text className="text-muted-foreground px-1 text-[12px] font-medium">
+                      {isUser ? '나' : 'Hayate'}
+                    </Text>
+                    <View
+                      className={cn(
+                        'max-w-[84%] rounded-3xl px-4 py-3',
+                        isUser
+                          ? 'bg-primary rounded-br-lg'
+                          : 'border-border bg-card rounded-bl-lg border'
+                      )}
+                    >
+                      <Text
+                        className={cn(
+                          'text-[15px] leading-6',
+                          isUser ? 'text-primary-foreground' : 'text-foreground'
+                        )}
+                      >
+                        {item.text}
+                      </Text>
+                    </View>
+                  </View>
+                )
+              }}
               showsVerticalScrollIndicator={false}
               keyboardShouldPersistTaps="handled"
               style={{ flex: 1 }}
