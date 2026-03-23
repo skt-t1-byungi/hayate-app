@@ -26,5 +26,6 @@
 ## Icon Principles
 
 - **Library:** Use `phosphor-react-native`. Do not mix families.
-- **Space Saving:** Replace text with icons (`Button size="icon"`) where space is tight or actions are obvious.
-- **Style:** Keep weight and size (`18~22`) consistent.
+- **Naming:** Avoid deprecated names. Use the `*Icon` suffix consistently (e.g., `ListIcon`).
+- **Styling:** Use explicit props (`color`, `size`, `weight`) instead of `className`. Keep size (`18~22`) consistent.
+- **Space Saving:** Replace text with icons (`Button size="icon"`) where space is tight.
