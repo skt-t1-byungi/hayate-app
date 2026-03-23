@@ -22,3 +22,9 @@
 - **SafeArea:** No `className` on `SafeAreaView`. Use a wrapper `View` for layout/background.
 - **Reuse `components/ui`:** Strictly use local primitives (`Text`, `Input`, `Button`). Avoid ad-hoc wrappers.
 - **Inline UI:** Build screen UI inline. Extract components only for clear deduplication.
+
+## Icon Principles
+
+- **Library:** Use `phosphor-react-native`. Do not mix families.
+- **Space Saving:** Replace text with icons (`Button size="icon"`) where space is tight or actions are obvious.
+- **Style:** Keep weight and size (`18~22`) consistent.

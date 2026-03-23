@@ -6,6 +6,8 @@ import { FlatList, View } from 'react-native'
 
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
+import { PaperPlaneTilt } from 'phosphor-react-native'
+
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
 import { Text } from '~/components/ui/text'
@@ -45,18 +47,6 @@ export default function App() {
           <StatusBar style="dark" />
 
           <View className="flex-1 px-4 pt-2 pb-3">
-            <View className="border-border/60 border-b pb-3">
-              <Text className="text-muted-foreground text-[11px] font-semibold tracking-[0.18em]">
-                HAYATE
-              </Text>
-              <Text className="text-foreground mt-2 text-[26px] font-semibold tracking-[-0.03em]">
-                더 빠르게 정리하는 대화
-              </Text>
-              <Text className="text-muted-foreground mt-1 text-sm">
-                해야 할 일을 짧게 꺼내면 흐름을 바로 잡아줍니다.
-              </Text>
-            </View>
-
             <FlatList
               data={MESSAGES}
               keyExtractor={(item) => item.id}
@@ -74,16 +64,16 @@ export default function App() {
                     </Text>
                     <View
                       className={cn(
-                        'max-w-[84%] rounded-3xl px-4 py-3',
+                        'max-w-[84%] rounded-3xl border px-4 py-3',
                         isUser
-                          ? 'bg-primary rounded-br-lg'
-                          : 'border-border bg-card rounded-bl-lg border'
+                          ? 'bg-muted rounded-br-lg border-[#b9dcec]'
+                          : 'border-border bg-card rounded-bl-lg'
                       )}
                     >
                       <Text
                         className={cn(
                           'text-[15px] leading-6',
-                          isUser ? 'text-primary-foreground' : 'text-foreground'
+                          isUser ? 'text-[#1f536d]' : 'text-foreground'
                         )}
                       >
                         {item.text}
@@ -95,24 +85,27 @@ export default function App() {
               showsVerticalScrollIndicator={false}
               keyboardShouldPersistTaps="handled"
               style={{ flex: 1 }}
-              contentContainerStyle={{ gap: 12, paddingVertical: 16 }}
-              ListHeaderComponent={
-                <View className="mb-4 items-center">
-                  <Text className="bg-muted text-muted-foreground rounded-full px-3 py-1 text-xs font-medium">
-                    오늘
-                  </Text>
-                </View>
-              }
+              contentContainerStyle={{
+                gap: 12,
+                paddingTop: 8,
+                paddingBottom: 14
+              }}
             />
 
-            <View className="border-border/60 border-t pt-3">
-              <View className="flex-row items-center gap-3">
+            <View className="border-border/70 bg-card rounded-[28px] border px-3 py-3">
+              <View className="flex-row items-center gap-2.5">
                 <Input
-                  className="bg-muted min-h-12 flex-1 rounded-full border-0 px-5 py-0"
+                  className="min-h-12 flex-1 rounded-full border border-[#d1e5ef] bg-[#f7fcff] px-5 py-0"
                   placeholder="메시지를 입력하세요"
                   returnKeyType="send"
                 />
-                <Button className="min-h-12 rounded-full px-5">보내기</Button>
+                <Button
+                  size="icon"
+                  className="bg-primary rounded-full"
+                  accessibilityLabel="메시지 보내기"
+                >
+                  <PaperPlaneTilt color="#f7fdff" size={20} weight="fill" />
+                </Button>
               </View>
             </View>
           </View>
